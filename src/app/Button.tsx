@@ -18,8 +18,7 @@ export default function Button(props: Props) {
       {
         method: "POST",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkYWNkNTI1MGQ0ODQ0OWJhYmM0YjUwNTliZGQwYzRhYSIsImlhdCI6MTY4MzY1Mjg4OSwiZXhwIjoxOTk5MDEyODg5fQ.oGygASsrSiOsI3Iyjb161VNEApPBv589QoJYDn-jUqI",
+          Authorization: process.env.NEXT_PUBLIC_HOME_ASSISTANT_TOKEN,
         },
         body: JSON.stringify({ entity_id: "light.table_lamp_color" }),
       }
