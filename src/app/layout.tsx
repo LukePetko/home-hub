@@ -19,8 +19,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={notoSans.className}>
         <div className="flex">
-          <NavBar navClasses="w-1/5" />
-          <div>{children}</div>
+          <NavBar navClasses="collapse md:visible lg:w-1/5 md:w-1/4 fixed" />
+          <div className="md:pl-[25%] lg:pl-[20%]">{children}</div>
         </div>
       </body>
     </html>
