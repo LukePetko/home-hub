@@ -9,9 +9,9 @@ export default function NavBarMobile() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="md:hidden fixed bottom-0 flex flex-col w-screen justify-center items-center">
+    <div className="md:hidden">
       <div
-        className={`w-screen h-screen bg-neutral-950 p-2 transition-all duration-700 text-white ${
+        className={`fixed inset-0 bg-neutral-950 p-2 transition-all duration-700 text-white ${
           isOpen ? "opacity-100" : "opacity-0 overflow-hidden"
         }`}
       >
@@ -19,7 +19,7 @@ export default function NavBarMobile() {
           Home Hub
         </h1>
         <Paths />
-        <div className="pt-8 pb-2 px-3">
+        <div className="py-2 px-3">
           <h2 className="text-lg">Lukas</h2>
         </div>
         <button
@@ -27,13 +27,25 @@ export default function NavBarMobile() {
           onClick={() => setIsOpen(!isOpen)}
         ></button>
       </div>
-      <button
-        className="fixed bottom-2 w-max bg-neutral-950 rounded-full p-3 mb-2"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <X className="text-4xl text-neutral-400 bg-neutral-950 transition duration-700" />
-        <Menu className="text-4xl text-neutral-400 bg-neutral-950 transition duration-700" />
-      </button>
+      <div className="fixed bottom-0 w-screen flex justify-center p-2">
+        <button
+          className={`w-max rounded-full p-3 mb-2 ${
+            isOpen ? "bg-neutral-700" : "bg-neutral-950"
+          }`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <X
+            className={`text-4xl text-neutral-300 transition duration-700 ${
+              !isOpen ? "h-0 opacity-0" : "opacity-100"
+            }`}
+          />
+          <Menu
+            className={`text-4xl text-neutral-400 bg-neutral-950 transition duration-700 ${
+              isOpen ? "h-0 opacity-0" : "opacity-100"
+            }`}
+          />
+        </button>
+      </div>
     </div>
   );
 }
