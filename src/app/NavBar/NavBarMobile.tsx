@@ -29,12 +29,12 @@ export default function NavBarMobile() {
       >
         <X
           className={`text-4xl text-neutral-400 bg-neutral-950 transition duration-700 ${
-            isOpen ? "h-0 opacity-0 -rotate-90" : "opacity-100"
+            !isOpen ? "h-0 opacity-0 -rotate-90" : "opacity-100"
           }`}
         />
         <Menu
           className={`text-4xl text-neutral-400 bg-neutral-950 transition duration-700 ${
-            !isOpen ? "h-0 opacity-0 -rotate-90" : "opacity-100"
+            isOpen ? "h-0 opacity-0 -rotate-90" : "opacity-100"
           }`}
         />
       </button>
