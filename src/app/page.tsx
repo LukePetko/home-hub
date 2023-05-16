@@ -2,6 +2,7 @@ import Button from "./Button";
 import Tiles from "./Tiles";
 import "/node_modules/react-grid-layout/css/styles.css";
 import "/node_modules/react-resizable/css/styles.css";
+import "./tiles/styles.css";
 
 export default function Home() {
   return (
