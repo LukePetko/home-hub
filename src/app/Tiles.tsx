@@ -1,50 +1,17 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Responsive } from "react-grid-layout";
-import TestTile from "./tiles/TestTile";
-import TestTile2 from "./tiles/TestTile2";
+import { tileTypes } from "./tiles/";
+import { Tile } from "./types/tile";
+import { getLayout } from "./mock/tiles";
 
 export default function Tiles() {
-  const components = {
-    TestTile: TestTile,
-    TestTile2: TestTile2,
-  };
+  const [layout, setLayout] = useState<Tile[]>([]);
 
-  const layout = [
-    {
-      i: "a",
-      x: 0,
-      y: 0,
-      w: 1,
-      h: 1,
-      component: "TestTile",
+  useEffect(() => {
+    setLayout(getLayout());
+  }, []);
 
-      componentProps: { text: "Test 1x1" },
-    },
-    {
-      i: "b",
-      x: 1,
-      y: 0,
-      w: 2,
-      h: 2,
-      minW: 2,
-      maxW: 2,
-      minH: 2,
-      maxH: 2,
-      component: "TestTile2",
-      componentProps: { text2: "Test 2x2" },
-    },
-    {
-      i: "c",
-      x: 4,
-      y: 0,
-      w: 1,
-      h: 2,
-      component: "TestTile",
-
-      componentProps: { text: "Test 1x2" },
-    },
-  ];
   return (
     <Responsive
       className="layout"
@@ -58,22 +25,17 @@ export default function Tiles() {
       compactType="horizontal"
     >
       {layout.map((tile) => {
-        const Component = components[tile.component];
+        const Component = tileTypes[tile.component];
         return (
           <div key={tile.i} className="p-2">
             <Component
               key={tile.i}
-              {...tile.componentProps}
               w={tile.w}
               h={tile.h}
+              {...tile.componentProps}
             />
           </div>
         );
-        // return (
-        //   <div key={tile.i}>
-        //     <Button on>aaa</Button>
-        //   </div>
-        // );
       })}
     </Responsive>
   );
